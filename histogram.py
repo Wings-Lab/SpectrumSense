@@ -160,6 +160,9 @@ plt.subplots_adjust(left=0.15)
 plt.show()
 
 
+a =5
+
+
 # fig = plt.figure(1)
 # plt.plot(new_time,new_power)
 # plt.show()
