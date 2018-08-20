@@ -9,22 +9,24 @@ from scipy import signal
 import collections
 import numpy as np
 from numpy.fft import fft, ifft, fft2, ifft2, fftshift
+import math
 # from scipy import fftpack
 # while 1:
 
 def cross_correlation_using_fft(x, y):
-    f1 = fft(x)
-    f2 = fft(np.flipud(y))
-    cc = np.real(ifft(f1 * f2))
-    return fftshift(cc)
+	f1 = fft(x)
+	f2 = fft(np.flipud(y))
+	cc = np.real(ifft(f1 * f2))
+	return fftshift(cc)
 
 def compute_shift(x, y):
-    assert len(x) == len(y)
-    c = cross_correlation_using_fft(x, y)
-    assert len(c) == len(x)
-    zero_index = int(len(x) / 2) - 1
-    shift = zero_index - np.argmax(c)
-    return shift    
+	# print(len(x),len(y))
+	assert len(x) == len(y)
+	c = cross_correlation_using_fft(x, y)
+	assert len(c) == len(x)
+	zero_index = int(len(x) / 2) - 1
+	shift = zero_index - np.argmax(c)
+	return shift    
 
 
 def adjust(t1, lag):
@@ -34,15 +36,15 @@ def adjust(t1, lag):
 	return new_time
 
 def butter_lowpass(cutoff, fs, order=100):
-    nyq = 0.5 * fs
-    normal_cutoff = cutoff / nyq
-    b, a = butter(order, normal_cutoff, btype='low', analog=False)
-    return b, a
+	nyq = 0.5 * fs
+	normal_cutoff = cutoff / nyq
+	b, a = butter(order, normal_cutoff, btype='low', analog=False)
+	return b, a
 
 def butter_lowpass_filter(data, cutoff, fs, order=100):
-    b, a = butter_lowpass(cutoff, fs, order=order)
-    y = lfilter(b, a, data)
-    return y
+	b, a = butter_lowpass(cutoff, fs, order=order)
+	y = lfilter(b, a, data)
+	return y
 
 def generate_frequency_plots(s1_freq_filtered, s1_time_filtered, s1_power_filtered, s2_freq_filtered, s2_time_filtered, s2_power_filtered, s3_freq_filtered, s3_time_filtered, s3_power_filtered):
 	fig = plt.figure(1)
@@ -150,10 +152,12 @@ def filter(start,end,s1_freq_samples,s1_time_samples,s1_power_samples):
 	number = len(s1_freq_samples[0])
 	# print("---> " ,number)
 	for i,f in enumerate(s1_freq_samples):
-		# print(f)
-		# print(start)
-		# print(end)	
-		if (set([start,end]).issubset(set(f))):
+		print(f)
+		print(start)
+		print(end)	
+		# if (set([start,end]).issubset(set(f))):
+		if (set([915800000.00]).issubset(set(f))):
+
 			# print(f)
 			# print("*************CAME HERE***********************")
 			new_freq.append(f)
@@ -214,6 +218,7 @@ def connect_and_fetch(macs):
 			sensor3_power.append(element['event']['power'])
 			sensor3_freq.append(element['event']['frequency'])
 
+	print (sensor2_freq)		
 	return (sensor1_time, sensor1_power, sensor1_freq, sensor2_time, sensor2_power, sensor2_freq, sensor3_time, sensor3_power, sensor3_freq)
 
 
@@ -368,14 +373,14 @@ def padding(p1,t1,start,end,stp):
 
 
 
-sensor1_time, sensor1_power, sensor1_freq, sensor2_time, sensor2_power, sensor2_freq, sensor3_time, sensor3_power, sensor3_freq = connect_and_fetch(['130.245.68.1', '130.245.144.129' ,'130.245.72.1'])
+sensor1_time, sensor1_power, sensor1_freq, sensor2_time, sensor2_power, sensor2_freq, sensor3_time, sensor3_power, sensor3_freq = connect_and_fetch(['130.245.9.243', '130.245.144.129' ,'130.245.72.45'])
 # print(max(sensor1_power))
 # print(max(sensor2_power))
 # print(max(sensor3_power))
 
 s1_time_samples,s1_power_samples,s1_freq_samples,s2_time_samples,s2_power_samples,s2_freq_samples,s3_time_samples,s3_power_samples,s3_freq_samples = organize_data(sensor1_time, sensor1_power, sensor1_freq, sensor2_time, sensor2_power, sensor2_freq, sensor3_time, sensor3_power, sensor3_freq)
 
-start_freq = 914800000.00
+start_freq = min(sensor1_freq)
 end_freq = 915800000.00
 
 
@@ -388,6 +393,13 @@ s3_freq_filtered, s3_time_filtered, s3_power_filtered = filter(start_freq,end_fr
 p1,t1 = generate_time_series(s1_freq_filtered,s1_time_filtered, s1_power_filtered)
 p2,t2 = generate_time_series(s2_freq_filtered,s2_time_filtered, s2_power_filtered)
 p3,t3 = generate_time_series(s3_freq_filtered,s3_time_filtered, s3_power_filtered)
+
+print(p1,t1)
+print("__________________________________________")
+print(p2,t2)
+print("__________________________________________")
+print(p3,t3)
+print("__________________________________________")
 
 
 stp = 1000
@@ -414,9 +426,9 @@ max_time = min(max(t1),max(t2),max(t3))
 # 	print(i)
 
 
-sen1,t1= padding(p1,t1,min_time,max_time,stp)
-sen2,t2 = padding(p2,t2,min_time,max_time,stp)
-sen3,t3 = padding(p3,t3,min_time,max_time,stp)
+# sen1,t1= padding(p1,t1,min_time,max_time,stp)
+# sen2,t2 = padding(p2,t2,min_time,max_time,stp)
+# sen3,t3 = padding(p3,t3,min_time,max_time,stp)
 
 # plt.figure()
 # plt.plot(sen1)
@@ -436,9 +448,23 @@ sen3,t3 = padding(p3,t3,min_time,max_time,stp)
 
 
 
-# p1,t1 = new_generate_time_series(sensor1_freq,sensor1_time, sensor1_power)
-# p2,t2 = new_generate_time_series(sensor2_freq,sensor2_time, sensor2_power)
-# p3,t3 = new_generate_time_series(sensor3_freq,sensor3_time, sensor3_power)
+p1,t1 = new_generate_time_series(sensor1_freq,sensor1_time, sensor1_power)
+p2,t2 = new_generate_time_series(sensor2_freq,sensor2_time, sensor2_power)
+p3,t3 = new_generate_time_series(sensor3_freq,sensor3_time, sensor3_power)
+
+
+# p1 = np.divide(p1,10) 
+# p2 = np.divide(p2,10) 
+# p3 = np.divide(p3,10) 
+
+# new_p1 = [10**i for i in p1]
+# new_p2 = [10**i for i in p2]
+# new_p3 = [10**i for i in p3]
+
+# p1 = new_p1
+# p2 = new_p2
+# p3 = new_p3
+
 
 # Filter requirements.
 order = 6
@@ -453,15 +479,15 @@ y3 = butter_lowpass_filter(p3, cutoff, fs, order)
 
 restrict = min(len(p1),len(p2),len(p3))
 number_of_sensors = 3
-series = (sen1,sen2,sen3)
+# series = (p1[0:restrict],p2[],p3)
 
-print(len(sen1), len(sen2), len(sen3), len(t1))
+# print(len(sen1), len(sen2), len(sen3), len(t1))
 
-# series = (p1[0:restrict-1],p2[0:restrict-1],p3[0:restrict-1])
+series = (p1[0:restrict-1],p2[0:restrict-1],p3[0:restrict-1])
 signal_length = len(p1)
 
 # cross_correlations,lags = find_correlation(series)
-
+print(len(series[0]),len(series[1]),len(series[2]))
 shift1 = compute_shift(series[0],series[1])
 shift2 = compute_shift(series[0],series[2])
 lags = [shift1, shift2]
@@ -478,8 +504,8 @@ time3 = range(0,restrict-1)
 
 
 
-new_t2 = adjust(t2,lags[0])
-new_t3 = adjust(t3,lags[1])
+new_t2 = adjust(time2,lags[0])
+new_t3 = adjust(time3,lags[1])
 
 
 
@@ -496,13 +522,13 @@ new_t3 = adjust(t3,lags[1])
 # print(len(y3),len(time1))
 
 
-# for i in range(0,20):
-# 	print(time1[i+1]-time1[i])
-# 	print("*************************************")
-# 	print(t2[i+1]-t2[i])
-# 	print("*************************************")
-# 	print(t3[i+1]-t3[i])
-# 	print("*************************************")
+for i in range(0,20):
+	print(t1[i+1]-t1[i])
+	print("*************************************")
+	print(t2[i+1]-t2[i])
+	print("*************************************")
+	print(t3[i+1]-t3[i])
+	print("*************************************")
 
 # print(time1)
 # print("*************************************")
@@ -511,30 +537,45 @@ new_t3 = adjust(t3,lags[1])
 
 # print(t3)
 
+print(len(p1[0:restrict-1]), len(p2[0:restrict-1]), len(p3[0:restrict-1]) )
+# print(len(time1))
 
 plt.subplot(2,1,1)
-plt.plot(time1,p1[0:restrict-1])
-plt.plot(time2,p2[0:restrict-1])
-plt.plot(time3,p3[0:restrict-1])
+plt.plot(time1,p1[0:restrict-1], marker='*')
+plt.plot(time2,p2[0:restrict-1],marker = '*')
+plt.plot(time3,p3[0:restrict-1],marker = '*')
 
 plt.subplot(2,1,2)
-plt.plot(time1,p1[0:restrict-1])
-plt.plot(new_t2,p2[0:restrict-1])
-plt.plot(new_t3,p3[0:restrict-1])
-
-# plt.show()
-
-plt.subplot(2,1,1)
-plt.plot(t1,sen1)
-plt.plot(t2,sen2)
-plt.plot(t3,sen3)
-
-plt.subplot(2,1,2)
-plt.plot(t1,sen1)
-plt.plot(new_t2,sen2)
-plt.plot(new_t3,sen3)
+plt.plot(time1,p1[0:restrict-1],marker = '*')
+plt.plot(new_t2,p2[0:restrict-1],marker = '*')
+plt.plot(new_t3,p3[0:restrict-1],marker ='*')
 
 plt.show()
+
+count  = 0
+for power in p1:
+	if power > -65:
+		count = count+1
+
+
+print (count)
+# plt.figure()
+# plt.plot(t1[0:restrict-1], p1[0:restrict-1])
+# plt.plot(t2[0:restrict-1], p2[0:restrict-1])
+# plt.plot(t3[0:restrict-1], p3[0:restrict-1])
+# plt.show()
+
+# plt.subplot(2,1,1)
+# plt.plot(t1,sen1)
+# plt.plot(t2,sen2)
+# plt.plot(t3,sen3)
+
+# plt.subplot(2,1,2)
+# plt.plot(t1,sen1)
+# plt.plot(new_t2,sen2)
+# plt.plot(new_t3,sen3)
+
+# plt.show()
 
 
 

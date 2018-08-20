@@ -42,7 +42,7 @@ static int samplingPeriod = 1; //seconds
 static std::string numberOfBins = "20";
 static std::string numberOfSpectraToAvg = "32";
 rtlsdr_dev_t *dev = NULL;
-std::string cmd_for_power = "./rtl_power_fftw -q -b 10 -f 915.8e6 -e 30 -g 1";
+std::string cmd_for_power = "./rtl_power_fftw -q -b 2 -f 915.8e6 -e 2m  -g 1";
 
 
 std::string get_mac(){
@@ -77,7 +77,7 @@ std::string get_mac(){
         // printf("IP = %s, MAC = %s", ip_address, mac_address);
     }
     fclose(fp);
-    return mac_address;
+    return ip_address;
 }
 
 
@@ -309,7 +309,8 @@ int main()
     int counter = 0;
    
    //set_up_device();
-    kaaClient->setLogUploadStrategy(std::make_shared<kaa::RecordCountLogUploadStrategy>(5, kaaClient->getKaaClientContext()));    NotificationListener notificationListener(kaaClient);
+    kaaClient->setLogUploadStrategy(std::make_shared<kaa::RecordCountLogUploadStrategy>(100, kaaClient->getKaaClientContext()));    
+    NotificationListener notificationListener(kaaClient);
     kaaClient->addNotificationListener(notificationListener);
     std::cin.clear();
     kaaClient->start();
