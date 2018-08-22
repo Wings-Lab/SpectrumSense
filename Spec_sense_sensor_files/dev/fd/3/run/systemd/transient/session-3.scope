@@ -1,0 +1,12 @@
+# This is a transient unit file, created programmatically via the systemd API. Do not edit.
+[Scope]
+Slice=user-1000.slice
+
+[Unit]
+Description=Session 3 of user muhammad
+After=systemd-logind.service
+After=systemd-user-sessions.service
+
+[Scope]
+SendSIGHUP=yes
+TasksMax=infinity

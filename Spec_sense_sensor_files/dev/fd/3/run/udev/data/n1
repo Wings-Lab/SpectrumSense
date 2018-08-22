@@ -1,0 +1,3 @@
+I:1526978
+E:ID_MM_CANDIDATE=1
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link

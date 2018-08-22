@@ -1,0 +1,26 @@
+I:3908176
+E:DEVPATH=/devices/pci0000:00/0000:00:1c.0/0000:02:00.0/net/wlp2s0
+E:SUBSYSTEM=net
+E:DEVTYPE=wlan
+E:INTERFACE=wlp2s0
+E:IFINDEX=3
+E:USEC_INITIALIZED=3908176
+E:ID_MM_CANDIDATE=1
+E:ID_NET_NAME_MAC=wlx9cb6d0e9734d
+E:ID_OUI_FROM_DATABASE=Rivet Networks
+E:ID_NET_NAME_PATH=wlp2s0
+E:ID_BUS=pci
+E:ID_VENDOR_ID=0x168c
+E:ID_MODEL_ID=0x003e
+E:ID_PCI_CLASS_FROM_DATABASE=Network controller
+E:ID_PCI_SUBCLASS_FROM_DATABASE=Network controller
+E:ID_VENDOR_FROM_DATABASE=Qualcomm Atheros
+E:ID_MODEL_FROM_DATABASE=QCA6174 802.11ac Wireless Network Adapter
+E:ID_PATH=pci-0000:02:00.0
+E:ID_PATH_TAG=pci-0000_02_00_0
+E:ID_NET_DRIVER=ath10k_pci
+E:ID_NET_LINK_FILE=/lib/systemd/network/99-default.link
+E:ID_NET_NAME=wlp2s0
+E:SYSTEMD_ALIAS=/sys/subsystem/net/devices/wlp2s0 /sys/subsystem/net/devices/wlp2s0
+E:TAGS=:systemd:
+G:systemd

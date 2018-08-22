@@ -1,0 +1,5 @@
+S:snd/by-path/pci-0000:00:1f.3
+I:3226655
+E:ID_PATH=pci-0000:00:1f.3
+E:ID_PATH_TAG=pci-0000_00_1f_3
+G:uaccess

@@ -1,0 +1,4 @@
+I:515259154274
+E:SYSTEMD_ALIAS=/sys/subsystem/bluetooth/devices/hci0
+E:SYSTEMD_WANTS=bluetooth.target
+G:systemd

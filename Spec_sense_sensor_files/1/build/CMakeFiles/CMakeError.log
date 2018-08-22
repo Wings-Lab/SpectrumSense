@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e5d07/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e5d07.dir/build.make CMakeFiles/cmTC_e5d07.dir/build
+make[1]: Entering directory '/home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e5d07.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_e5d07.dir/CheckSymbolExists.cxx.o -c /home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_e5d07
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5d07.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_e5d07.dir/CheckSymbolExists.cxx.o  -o cmTC_e5d07 
+CMakeFiles/cmTC_e5d07.dir/CheckSymbolExists.cxx.o: In function `main':
+CheckSymbolExists.cxx:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_e5d07.dir/build.make:97: recipe for target 'cmTC_e5d07' failed
+make[1]: *** [cmTC_e5d07] Error 1
+make[1]: Leaving directory '/home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_e5d07/fast' failed
+make: *** [cmTC_e5d07/fast] Error 2
+
+File /home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9a365/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9a365.dir/build.make CMakeFiles/cmTC_9a365.dir/build
+make[1]: Entering directory '/home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9a365.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_9a365.dir/CheckFunctionExists.cxx.o -c /home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_9a365
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9a365.dir/link.txt --verbose=1
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_9a365.dir/CheckFunctionExists.cxx.o  -o cmTC_9a365 -lpthreads 
+/usr/bin/x86_64-linux-gnu-ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_9a365.dir/build.make:97: recipe for target 'cmTC_9a365' failed
+make[1]: *** [cmTC_9a365] Error 1
+make[1]: Leaving directory '/home/muhammad/Desktop/Dropbox/Research/PhD/Specsense/Intrusion_detection/Code/SpecSense/Spec_sense_sensor_files/1/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9a365/fast' failed
+make: *** [cmTC_9a365/fast] Error 2
+
+

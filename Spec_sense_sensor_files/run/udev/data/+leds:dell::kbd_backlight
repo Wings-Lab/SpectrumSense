@@ -1,0 +1,5 @@
+I:3001037
+E:ID_PATH=platform-dell-laptop
+E:ID_PATH_TAG=platform-dell-laptop
+E:SYSTEMD_WANTS=systemd-backlight@leds:dell::kbd_backlight.service
+G:systemd

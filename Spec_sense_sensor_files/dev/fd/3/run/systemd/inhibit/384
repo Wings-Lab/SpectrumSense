@@ -1,0 +1,8 @@
+# This is private data. Do not parse.
+WHAT=sleep
+MODE=delay
+UID=120
+PID=1387
+WHO=gdm
+WHY=GNOME handling keypresses
+FIFO=/run/systemd/inhibit/384.ref

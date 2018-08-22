@@ -1,0 +1,7 @@
+Log of fsck -C -a -T -t ext4 /dev/nvme0n1p6 
+Mon Aug 13 19:04:04 2018
+
+/dev/nvme0n1p6: clean, 536309/9601024 files, 25571796/38400512 blocks
+
+Mon Aug 13 19:04:04 2018
+----------------

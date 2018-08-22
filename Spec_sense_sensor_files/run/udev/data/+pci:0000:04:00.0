@@ -1,0 +1,5 @@
+I:2778163
+E:ID_PCI_CLASS_FROM_DATABASE=Mass storage controller
+E:ID_PCI_SUBCLASS_FROM_DATABASE=Non-Volatile memory controller
+E:ID_PCI_INTERFACE_FROM_DATABASE=NVM Express
+E:ID_VENDOR_FROM_DATABASE=Toshiba America Info Systems

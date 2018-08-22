@@ -1,0 +1,1 @@
+{"type":"record","name":"configuration_schema","namespace":"org.kaaproject.kaa.schema.sample","fields":[{"name":"sample_period","type":"float","by_default":0.20000000298023224}],"version":1,"displayName":"configuration_schema"}
