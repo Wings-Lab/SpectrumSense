@@ -1,0 +1,152 @@
+###########################
+CHANGING TRANSMISSION TIME
+###########################
+
+1. transmit_time = np.random.uniform(0,0.01) || sleep_time = np.random.uniform(0.5,1.5) || GAIN = 70
+
+	1.	COUNT1 =  16
+		COUNT2 =  81
+		COUNT3 =  20
+
+	2.  COUNT1 =  20
+		COUNT2 =  75
+		COUNT3 =  41
+	
+	3.	COUNT1 =  26
+		COUNT2 =  76
+		COUNT3 =  16
+
+	4. 	COUNT1 =  15
+		COUNT2 =  84
+		COUNT3 =  56
+
+	5. 	COUNT1 =  70
+		COUNT2 =  84
+		COUNT3 =  61
+	
+	6. 	COUNT1 =  28
+		COUNT2 =  85
+		COUNT3 =  68
+
+	7.	COUNT1 =  72
+		COUNT2 =  80
+		COUNT3 =  62
+
+	8.	COUNT1 =  69
+		COUNT2 =  77
+		COUNT3 =  62
+
+	9. 	COUNT1 =  75
+		COUNT2 =  79
+		COUNT3 =  71
+	
+	10. COUNT1 =  58
+		COUNT2 =  78
+		COUNT3 =  81
+
+
+2. transmit_time = np.random.uniform(0.02,0.05) || sleep_time = np.random.uniform(0.5,1.5) || GAIN = 70
+
+
+	1. 	COUNT1 =  91
+		COUNT2 =  91
+		COUNT3 =  82
+
+	2. 	COUNT1 =  83
+		COUNT2 =  85
+		COUNT3 =  86
+
+	3.	COUNT1 =  81
+		COUNT2 =  83
+		COUNT3 =  90
+
+	4. 	COUNT1 =  81
+		COUNT2 =  86
+		COUNT3 =  86
+
+	5. 	COUNT1 =  78
+		COUNT2 =  93
+		COUNT3 =  86
+	
+	6. 	COUNT1 =  76
+		COUNT2 =  82
+		COUNT3 =  89
+
+	7. 	COUNT1 =  85
+		COUNT2 =  84
+		COUNT3 =  86
+		
+	8. 	COUNT1 =  90
+		COUNT2 =  90
+		COUNT3 =  83
+		
+	9. 	COUNT1 =  84
+		COUNT2 =  82
+		COUNT3 =  89
+		
+	10. COUNT1 =  87
+		COUNT2 =  92
+		COUNT3 =  86
+
+2. transmit_time = np.random.uniform(0.05,0.1) || sleep_time = np.random.uniform(0.5,1.5) || GAIN = 70	
+
+	1. 	COUNT1 =  65
+		COUNT2 =  96
+		COUNT3 =  90
+
+	2. 	COUNT1 =  94
+		COUNT2 =  95
+		COUNT3 =  93
+		
+	3. 	COUNT1 =  96
+		COUNT2 =  95
+		COUNT3 =  91
+		
+	4.  COUNT1 =  91
+		COUNT2 =  96
+		COUNT3 =  92
+
+	5.  COUNT1 =  87
+		COUNT2 =  93
+		COUNT3 =  89
+
+	6.  COUNT1 =  90
+		COUNT2 =  94
+		COUNT3 =  92
+
+	7.  COUNT1 =  95
+		COUNT2 =  95
+		COUNT3 =  93
+
+	8.  COUNT1 =  89
+		COUNT2 =  96
+		COUNT3 =  92
+
+	9.  COUNT1 =  93
+		COUNT2 =  97
+		COUNT3 =  93
+
+	10. COUNT1 =  89
+		COUNT2 =  91
+		COUNT3 =  91
+		
+	
+3. transmit_time = np.random.uniform(0.1,0.2) || sleep_time = np.random.uniform(0.5,1.5) || GAIN = 70	
+
+	1. 
+
+	
+	
+	
+	
+
+
+ 
+
+
+	
+
+
+
+ 	
+	

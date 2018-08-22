@@ -324,6 +324,7 @@ int main()
         std::cout << (boost::format("Topic ID-> %1%, Topic name-> %2%") % topic.id % topic.name) << std::endl;
     }
     switch_flag = false;
+    while (counter < 2)
     {
         counter++;
         extractData(kaaClient);
